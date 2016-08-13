@@ -2,7 +2,7 @@
 
 This guide explains what the `urlChangeTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
 
-## Overview
+## Aperçu
 
 The `urlChangeTracker` plugin detects changes to the URL via the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) and automatically updates the tracker and sends additional pageviews. This allows [single page applications](https://en.wikipedia.org/wiki/Single-page_application) to be tracked like traditional sites without any extra configuration.
 
@@ -10,7 +10,7 @@ Developers of single page applications should make sure their framework isn't al
 
 **Note:** this plugin does not support tracking hash changes as most Google Analytics implementations do not capture the hash portion of the URL when tracking pageviews.
 
-## Usage
+## Utilisation
 
 To enable the `urlChangeTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'urlChangeTracker'`, and pass in the configuration options (if any) you want to set:
 

@@ -2,13 +2,13 @@
 
 This guide explains what the `impressionTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
 
-## Overview
+## Aperçu
 
 The `impressionTracker` plugin allows you to specify a list of elements and then track whether any of those elements are visible within the browser viewport. If any of the elements are not visible, an event is sent to Google Analytics as soon as they become visible.
 
 Impression tracking is useful for getting a more accurate sense of whether particular advertisements or call-to-action elements were seen by the user.
 
-## Usage
+## Utilisation
 
 To enable the `impressionTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'impressionTracker'`, and pass in the configuration options you want to set:
 

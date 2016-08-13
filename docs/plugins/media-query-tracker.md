@@ -2,13 +2,13 @@
 
 This guide explains what the `mediaQueryTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
 
-## Overview
+## Aperçu
 
 Most sites today use responsive design to update the page layout based on the screen size or capabilities of the user's device. If [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) are used to alter the look or functionality of a page, it's important to capture that information to better understand how usage differs when different media queries are active.
 
 The `mediaQueryTracker` plugin allows you to register the set of media query values you're using, and those values are automatically tracked via [custom dimensions](https://support.google.com/analytics/answer/2709828) with each hit. It also sends events when those values change.
 
-## Usage
+## Utilisation
 
 To enable the `mediaQueryTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'mediaQueryTracker'`, and pass in the configuration options you want to set:
 

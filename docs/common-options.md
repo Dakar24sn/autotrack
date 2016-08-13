@@ -1,6 +1,6 @@
-# Common Options
+# Options communes
 
-Many of the autotrack plugins accept options that are common to multiple different plugins. The following common options are documented in this guide:
+Beaucoup des plugins d'autotrack acceptent des options communes à plusieurs plugins différents. Les options communes qui suivent sont documentées dans ce guide :
 
 - [`fieldsObj`](#fieldsobj)
 - [`attributePrefix`](#attributeprefix)
@@ -12,7 +12,7 @@ Some of the autotrack plugins send hits with default [analytics.js field values]
 
 The `fieldsObj` option is an `Object` whose properties can be any [analytics.js field name](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference), and whose values will be used as the corresponding field value for all hits sent by the plugin.
 
-### Examples
+### Exemples
 
 #### `mediaQueryTracker`
 
@@ -50,7 +50,7 @@ By default, the `attributePrefix` value used by each plugin is the string `'ga-'
 
 **Note:** when setting the same field in both the `fieldsObj` option as well as via a DOM element attribute, the attribute's value will override the `fieldsObj` value.
 
-### Examples
+### Exemples
 
 #### `eventTracker`
 
@@ -107,11 +107,11 @@ Within the `hitFilter` function you can get the value of any of the model object
 
 To modify the model for the current hit only (and not all subsequent hits), make sure to set the third argument ([`temporary`](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference#set)) to `true`.
 
-### How it works
+### Comment ça marche
 
 The `hitFilter` option works by overriding the tracker's [`buildHitTask`](https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks). The passed `hitFilter` function runs after the `fieldsObj` values and attribute fields have been set on the tracker but before running the original `buildHitTask`. Refer to the guide on [analytics.js tasks](https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks) to learn more.
 
-### Examples
+### Exemples
 
 #### `pageVisibilityTracker`
 

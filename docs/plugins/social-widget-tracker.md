@@ -2,11 +2,11 @@
 
 This guide explains what the `socialWidgetTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
 
-## Overview
+## Aperçu
 
 The `socialWidgetTracker` automatically adds social tracking for the official Twitter tweet/follow buttons and the Facebook like button. If you have the official Twitter or Facebook buttons on your page and you've enabled the `socialWidgetTracker` plugin, user interactions with those buttons will be automatically tracked.
 
-## Usage
+## Utilisation
 
 To enable the `socialWidgetTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'socialWidgetTracker'`, and pass in the configuration options (if any) you want to set:
 

@@ -1,17 +1,17 @@
-# Autotrack Documentation
+# Documentation d'Autotrack
 
-The autotrack [README](/README.md) is the best source to get a general overview of the autotrack library and get started using it.
+Le [README](/README.md) d'autotrack est la meilleure source pour avoir un pont de vue global de la bibliothèque et de commencer à l'utiliser.
 
-Once you understand how to use autotrack, the references listed here will help you get a deeper understanding and provide you with comprehensive instructions on how to use each autotrack plugin.
+Une fois que vous comprenez comment utiliser autotrack, les références listées ici vous aiderons à avoir une compréhension plus profonde et vous procurent des instructions compréhensibles sur comment utiliser chaque plugin d'autotrack.
 
-If you have a question that's not answered in one of these documents, feel free to [open an issue](https://github.com/googleanalytics/autotrack/issues/new) and ask.
+Si vous avez une question qui reste sans réponse après lecture de ces documents, vous êtes libre d'[ouvrir une issue](https://github.com/googleanalytics/autotrack/issues/new) et de demander.
 
-## General references
+## Références générales
 
-- [Common options](/docs/common-options.md)
-- [Upgrading from previous versions](/docs/upgrading.md)
+- [Options communes](/docs/common-options.md)
+- [Mise à jour depuis des versions précédentes](/docs/upgrading.md)
 
-## Plugin references
+## Références des plugins
 
 - [`cleanUrlTracker`](/docs/plugins/clean-url-tracker.md)
 - [`eventTracker`](/docs/plugins/event-tracker.md)
@@ -22,5 +22,3 @@ If you have a question that's not answered in one of these documents, feel free 
 - [`pageVisibilityTracker`](/docs/plugins/page-visibility-tracker.md)
 - [`socialWidgetTracker`](/docs/plugins/social-widget-tracker.md)
 - [`urlChangeTracker`](/docs/plugins/url-change-tracker.md)
-
-

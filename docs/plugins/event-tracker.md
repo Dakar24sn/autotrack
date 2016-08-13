@@ -2,13 +2,13 @@
 
 This guide explains what the `eventTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
 
-## Overview
+## Aperçu
 
 Many website development tools and content management systems will give page authors access to modify the HTML templates and page content but not give them access to the site's JavaScript. In such cases, it's very difficult to add event listeners to track user interactions with elements on the page.
 
 The `eventTracker` plugin solves this problem by providing declarative event binding to attributes in the HTML, making it possible to track user interactions with DOM elements without writing any JavaScript.
 
-## Usage
+## Utilisation
 
 To enable the `eventTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'eventTracker'`, and pass in the configuration options (if any) you want to set:
 
@@ -16,7 +16,7 @@ To enable the `eventTracker` plugin, run the [`require`](https://developers.goog
 ga('require', 'eventTracker', options);
 ```
 
-### Modifying the HTML
+### Modifier le HTML
 
 To add declarative interaction tracking to a DOM element, you start by adding a `ga-on` attribute (assuming the default `'ga-'` attribute prefix) and setting its value to whatever DOM event you want to listen for (note: it must be one of the events specified in the `events` configuration option). When the specified event is detected, a hit is sent to Google Analytics with whatever field attribute values are present on the element.
 
@@ -62,7 +62,7 @@ The following table outlines all possible configuration options for the `eventTr
   </tr>
 </table>
 
-## Default field values
+## Valeurs des champs par défaut
 
 The `eventTracker` plugin sets the following default field values on all hits it sends. To customize these values, use one of the [options](#options) described above, or set the field value declaratively as an attribute in the HTML.
 
@@ -77,7 +77,7 @@ The `eventTracker` plugin sets the following default field values on all hits it
   </tr>
 </table>
 
-## Methods
+## Méthodes
 
 The following table lists all methods for the `eventTracker` plugin:
 
@@ -94,9 +94,9 @@ The following table lists all methods for the `eventTracker` plugin:
 
 For details on how `analytics.js` plugin methods work and how to invoke them, see [calling plugin methods](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins#calling_plugin_methods) in the `analytics.js` documentation.
 
-## Examples
+## Exemples
 
-### Basic usage
+### Utilisation simple
 
 This example shows how to write the markup when not setting any configuration options:
 

@@ -2,7 +2,7 @@
 
 This guide explains what the `cleanUrlTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
 
-## Overview
+## Aperçu
 
 When viewing your most visited pages in Google Analytics, it's not uncommon to see multiple different URL paths that reference the same page on your site. The following report table is a good example of this and the frustrating situation many users find themselves in today:
 
@@ -33,7 +33,7 @@ To prevent this problem, it's best to settle on a single, canonical URL path for
 
 The `cleanUrlTracker` plugin helps you do this. It lets you specify a preference for whether or not to include extraneous parts of the URL path, and updates all URLs accordingly.
 
-### How it works
+### Comment ça marche
 
 The `cleanUrlPlugin` works by intercepting each hit as it's being sent and modifying the [`page`](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#page) field based on the rules specified by the configuration [options](#options).
 
@@ -41,7 +41,7 @@ If no `page` field exists, one is created based on the URL path from the [`locat
 
 **Note:** while the `cleanUrlTracker` plugin does modify the `page` field value for each hit, it never modifies the `location` field. This allows campaign and site search data encoded in the full URL to be preserved.
 
-## Usage
+## Utilisation
 
 To enable the `cleanUrlTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'cleanUrlTracker'`, and pass in the configuration options you want to set:
 
@@ -90,7 +90,7 @@ The following table outlines all possible configuration options for the `cleanUr
   </tr>
 </table>
 
-## Methods
+## Méthodes
 
 The following table lists all methods for the `cleanUrlTracker` plugin:
 
@@ -107,7 +107,7 @@ The following table lists all methods for the `cleanUrlTracker` plugin:
 
 For details on how `analytics.js` plugin methods work and how to invoke them, see [calling plugin methods](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins#calling_plugin_methods) in the `analytics.js` documentation.
 
-## Example
+## Exemple
 
 Given the four URL paths shown in the table at the beginning of this guide, the following `cleanUrlTracker` configuration would ensure that only the URL path `/contact` ever appears in your reports (assumes you've created a custom dimension for the query at index 1):
 

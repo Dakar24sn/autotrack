@@ -2,7 +2,7 @@
 
 This guide explains what the `outboundLinkTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
 
-## Overview
+## Aperçu
 
 When a visitor to your site clicks a link that goes to another page on your site, you can usually see this information in Google Analytics because the page being navigated to will typically send its own pageview. However, if a visitor to your site clicks a link that points to an external domain, you'll never know unless you track that click separately.
 
@@ -10,7 +10,7 @@ The `outboundLinkTracker` plugin automatically detects when links are clicked to
 
 Historically, outbound link tracking has been tricky to implement because most browsers stop executing JavaScript on the current page once a link that requests a new page is clicked. The `outboundLinkTracker` plugin handles these complications for you.
 
-## Usage
+## Utilisation
 
 To enable the `outboundLinkTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'outboundLinkTracker'`, and pass in any configuration options (if any) you wish to set:
 

@@ -2,7 +2,7 @@
 
 This guide explains what the `pageVisibilityTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
 
-## Overview
+## Aperçu
 
 It's becoming increasingly common for users to visit your site, and then leave it open in a browser tab for hours or days. And with rise in popularity of single page applications, some tabs almost never get closed.
 
@@ -18,7 +18,7 @@ The `pageVisibilityTracker` plugin listens for [`visibilitychange`](https://deve
 
 When using the `pageVisibilityTracker` plugin, you'll probably notice an increase in your session and pageview counts. This is not an error, the reality is your current implementation (based just on pageloads) is likely underreporting.
 
-## Usage
+## Utilisation
 
 To enable the `pageVisibilityTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'pageVisibilityTracker'`, and pass in any configuration options (if any) you wish to set:
 
@@ -187,4 +187,3 @@ ga('require', 'pageVisibilityTracker', {
 ```
 
 **Note:** this requires [creating custom metrics](https://support.google.com/analytics/answer/2709829) in your Google Analytics property settings.
-

@@ -1,21 +1,21 @@
-# Upgrade Guide
+# Manuel de mise à jour
 
-This guide outlines how to upgrade from any pre-1.0 version to version 1.0.
+Ce guide précise comment mettre à jour depuis toute version antérieure à la version 1.0.
 
-## Breaking changes
+## Changements non rétro-compatibles
 
-### Global changes
+### Changements globaux
 
-In version 1.0, you can no longer require all plugins with the command `ga('require', 'autotrack')`. This change was made to avoid users accidentally enabling plugin behavior they didn't intend.
+Dans la version 1.0, vous ne pouvez plus inclure tous les plusgins avec l'instruction `ga('require', 'autotrack')`. Ce changement a été fait pour éviter que des utilisateurs n'activent accidentellement des comportements de plugins qu'il ne souhaitent pas.
 
-Going forward, all autotrack plugins must be individually required, and their options individually specified.
+Maintenant, tous les plugins autotrack doivent être requis indivicuellement ainsi que leurs options.
 
 ```html
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-XXXXX-Y', 'auto');
 
-// Plugins must be required individually.
+// Les plugins doivent être requis individuellement
 ga('require', 'eventTracker');
 ga('require', 'outboundLinkTracker');
 ga('require', 'urlChangeTracker');
@@ -27,49 +27,49 @@ ga('send', 'pageview');
 <script async src="path/to/autotrack.js"></script>
 ```
 
-In all 1.x versions, a warning will be logged to the console if you require the `autotrack` plugin. In version 2.0, this warning will go away.
+Dans toutes les versions 1.x, un avertissement sera affiché dans la console si vous incluez le plugin `autotrack`. Dans la version 2.0, cet avertissement sera supprimé.
 
-### Individual plugin changes
+### Changements individuels des plugins
 
 #### [`mediaQueryTracker`](/docs/plugins/media-query-tracker.md)
 
-- The `mediaQueryDefinitions` option has been renamed to `definitions`.
-- The `mediaQueryChangeTemplate` option has been renamed to `changeTemplate`.
-- The `mediaQueryChangeTimeout` option has been renamed to `changeTimeout`.
+- L'option `mediaQueryDefinitions` a été renommée en `definitions`.
+- L'option `mediaQueryChangeTemplate` a été renommée en `changeTemplate`.
+- L'option `mediaQueryChangeTimeout` a été renommée en `changeTimeout`.
 
 #### `socialTracker`
 
-- The `socialTracker` plugin has been renamed to [`socialWidgetTracker`](/docs/plugins/social-widget-tracker.md) and no longer supports declarative social interaction tracking (since that can now be handled entirely via the [`eventTracker`](/docs/plugins/event-tracker.md) plugin).
+- Le plugin `socialTracker` a été renommé en [`socialWidgetTracker`](/docs/plugins/social-widget-tracker.md) et ne supporte plus le tracking déclaratif d'interaction sociale (puisque cela peut être entièrement géré manuellement via le plugin [`eventTracker`](/docs/plugins/event-tracker.md)).
 
-## Plugin enhancements
+## Améliorations des plugins
 
-### Global enhancement
+### Améliorations globales
 
-- All plugins that send hits accept both [`fieldsObj`](/docs/common-options.md#fieldsobj) and [`hitFilter`](/docs/common-options.md#hitfilter) options. These options can be used to set or change any valid analytics.js field prior to the hit being sent.
-- All plugins that send hits as a result of user interaction with a DOM element support [setting field values declaratively](/docs/common-options.md#attributeprefix).
+- Tous les plugins qui envoient des hits acceptent les deux options [`fieldsObj`](/docs/common-options.md#fieldsobj) et [`hitFilter`](/docs/common-options.md#hitfilter). Ces options peuvent être utilisées pour régler ou changer n'importe quel champ analytics.js valide avant que le hit ne soit envoyé.
+- Tous les plugins qui envoient des hits à la suite d'une interaction utilisateur avec un élément du DOM permettent de [définir des valeurs de champs déclarativement](/docs/common-options.md#attributeprefix).
 
-### Individual plugin enhancements
+### Améliorations spécifiques des plugins
 
 #### [`eventTracker`](/docs/plugins/event-tracker.md)
 
-- Added support for declarative tracking of any DOM event, not just click events (e.g. `submit`, `contextmenu`, etc.)
+- Ajout du support pour le suivi déclaratif de n'importe quel évènement DOM, pas seulement les évènements `click` (par exemple `submit`, `contextmenu`, etc.)
 
 #### [`outboundFormTracker`](/docs/plugins/outbound-form-tracker.md)
 
-- Added support for tracking forms within shadow DOM subtrees.
-- Added the ability to customize the selector used to identify forms.
-- Added a `parseUrl` utility function to the `shouldTrackOutboundForm` method to more easily identify or exclude outbound forms.
+- Ajout du support pour le suivi des formulaires sans sous-arborescence shadow DOM.
+- Ajout de la possibilité de personnaliser le sélecteur utilisé pour identifier les formulaires.
+- Ajout de la fonction utilitaire `parseUrl` à la méthode `shouldTrackOutboundForm` pour  identifer ou exclure plus facilement les formulaires sortants.
 
 #### [`outboundLinkTracker`](/docs/plugins/outbound-link-tracker.md)
 
-- Added support for DOM events other than `click` (e.g. `contextmenu`, `touchend`, etc.)
-- Added support for tracking links within shadow DOM subtrees.
-- Added the ability to customize the selector used to identify links.
-- Added a `parseUrl` utility function to the `shouldTrackOutboundLink` method to more easily identify or exclude outbound links.
+- Ajout du support for DOM events other than `click` (e.g. `contextmenu`, `touchend`, etc.)
+- Ajout du support for tracking links within shadow DOM subtrees.
+- Ajout de la ability to customize the selector used to identify links.
+- Ajout de la fonction utilitaire `parseUrl` à la méthode `shouldTrackOutboundLink` pour  identifer ou exclure plus facilement les liens sortants.
 
-## New plugins
+## Nouveaux plugins
 
-The following new plugins have been added. See their individual documentation pages for usage details.
+Les nouveaux plugins suivants ont été ajoutés. Regardez leurs pages de documentation dédiées pour les détails d'utilisation.
 
 - [`cleanUrlTracker`](/docs/plugins/clean-url-tracker.md)
 - [`impressionTracker`](/docs/plugins/impression-tracker.md)
