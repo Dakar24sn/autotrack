@@ -15,13 +15,13 @@
 
 Le [code de suivi JavaScript](https://developers.google.com/analytics/devguides/collection/analyticsjs/) par défaut pour Google Analytics se lance lors du premier chargement d'une page web et envoie un signal de page vue à Google Analytics. Si vous voulez en savoir plus que simplement le nombres de pages vues (par exemple les évènements, les interactions sociales), vous allez devoir écrire du code pour récupérer ces informations vous-même.
 
-Puisque la majorité des propriétaires de site se soucient des mêmes types d'interactions utilisateurs, les développeurs web se retrouvent à écrire encore et encore le même code  pour chaque nouveau site qu'ils batissent.
+Puisque la majorité des propriétaires de site se soucient des mêmes types d'interactions utilisateurs, les développeurs web se retrouvent à écrire encore et encore le même code  pour chaque nouveau site qu'ils bâtissent.
 
 Autotrack a été crée pour résoudre ce problème. Il fournit un suivi par défaut pour les interactions dont se soucient la plupart des gens et il propose plusieurs fonctionnalités commodes (comme le suivi d'évènement déclaratif) pour comprendre plus facilement que jamais comment les gens utilisent votre site.
 
 ## Plugins
 
-La bibliothèque `autotrack.js` est légère (6K gzippée) et inclus les plugins suivants. Par défaut tous les plugins sont fournis ensemblemais il peuvent être inclus et configurés également de manière individuelle. Ce tableau comporte une brève description de chaque plugin; vous pouvez cliquer sur le nom du plugin pour consulter la documentation complète et les instructions d'utilisation:
+La bibliothèque `autotrack.js` est légère (6K gzippée) et inclus les plugins suivants. Par défaut tous les plugins sont fournis ensemble mais il peuvent être inclus et configurés également de manière individuelle. Ce tableau comporte une brève description de chaque plugin; vous pouvez cliquer sur le nom du plugin pour consulter la documentation complète et les instructions d'utilisation:
 
 <table>
   <tr>
@@ -66,7 +66,7 @@ La bibliothèque `autotrack.js` est légère (6K gzippée) et inclus les plugins
   </tr>
 </table>
 
-**Avertissement :** autotrack est maintainu par des membres de l'équipe de la plateforme de développement de Google Analytics et s'adresse en priorité à un public de développeurs. Ce n'est pas un produit officiel de Google Analytics et ne donne pas droit au support Google Analytics 360. Les développeurs qui choisissent cette bibliothèque sont responsables de s'assurer que leur implémentation respecte les pré-requis des [conditions générales de Google Analytics](https://www.google.com/analytics/terms/fr.html) et les obligaations légales de leur pays respectif.
+**Avertissement :** autotrack est maintenu par des membres de l'équipe de la plateforme de développement de Google Analytics et s'adresse en priorité à un public de développeurs. Ce n'est pas un produit officiel de Google Analytics et ne donne pas droit au support Google Analytics 360. Les développeurs qui choisissent cette bibliothèque sont responsables de s'assurer que leur implémentation respecte les pré-requis des [conditions générales de Google Analytics](https://www.google.com/analytics/terms/fr.html) et les obligations légales de leur pays respectif.
 
 ## Installation et utilisation
 
@@ -100,7 +100,7 @@ Bien évidemment, vous aurez à faire les modifications suivantes pour adapter a
 - Remplacer La liste d'exemple de déclarations `require` de plugin avec les plugins que vous souhaitez utiliser.
 - Remplacer `path/to/autotrack.js` par le véritable emplacement du fichier `autotrack.js` hébergé sur votre serveur.
 
-**Note :** le [système de plugin analytics.js](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) est conçu pour le support des scripts chargés de manière asynchrone, donc cela ne fait rien si `autotrack.js` est chargé avant ou après `analytics.js`. Cela est égal aussi si la biobliothèque `autotrack.js` est chargé seule ou empaquetée avec le reste de votre code Javascript.
+**Note :** le [système de plugin analytics.js](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) est conçu pour le support des scripts chargés de manière asynchrone, donc cela ne fait rien si `autotrack.js` est chargé avant ou après `analytics.js`. Cela est égal aussi si la bibliothèque `autotrack.js` est chargé seule ou empaquetée avec le reste de votre code Javascript.
 
 ### Charger autotrack via npm
 
@@ -115,7 +115,7 @@ npm install autotrack
 require('autotrack');
 ```
 
-Le code ci-dessus va inclure tous les plugins dans votre fichier source généré. Si vous souhaitez seulement inclure un ensemble particulier de plugins, vous pouvez les inclure de manière individelle :
+Le code ci-dessus va inclure tous les plugins dans votre fichier source généré. Si vous souhaitez seulement inclure un ensemble particulier de plugins, vous pouvez les inclure de manière individuelle :
 
 ```js
 // Dans votre code JavaScript
@@ -144,13 +144,13 @@ ga('require', 'urlChangeTracker');
 ga('send', 'pageview');
 ```
 
-**Note:** Attention à ne pas confonfre le [`require`](https://nodejs.org/api/modules.html) de la déclaration d'inclusion du module node avec l'instruction [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/command-queue-reference#require) du `analytics.js`. Lors du chargement d'autotrack à l'aide d'un chargeur de module npm, les deux instructions `require` doivent être utilisées.
+**Note:** Attention à ne pas confondre le [`require`](https://nodejs.org/api/modules.html) de la déclaration d'inclusion du module node avec l'instruction [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/command-queue-reference#require) du `analytics.js`. Lors du chargement d'autotrack à l'aide d'un chargeur de module npm, les deux instructions `require` doivent être utilisées.
 
 ### Passer des options de configuration
 
 Tous les plugins autotrack acceptent un objet de configuration comme troisième paramètre à la commande `require`.
 
-Certains des plugins (par exemple `outboundLinkTracker`, `socialWidgetTracker`, `urlChangeTracker`) ont un comportement par défaut valable pour la plupart des gens sans spécifier d'options. D'autres plugins (par exemple `cleanUrlTracker`, `impressionTracker`, `mediaQueryTracker`) nécéssitent que certaines options de configuration soit définies pour pouvoir fonctionner.
+Certains des plugins (par exemple `outboundLinkTracker`, `socialWidgetTracker`, `urlChangeTracker`) ont un comportement par défaut valable pour la plupart des gens sans spécifier d'options. D'autres plugins (par exemple `cleanUrlTracker`, `impressionTracker`, `mediaQueryTracker`) nécessitent que certaines options de configuration soit définies pour pouvoir fonctionner.
 
 Reportez vous à la documentation spécifique de chaque plugin pour connaître les options acceptées par chaque plugin (et quelle est leur valeur par défaut s'il y en a une).
 
@@ -158,7 +158,7 @@ Reportez vous à la documentation spécifique de chaque plugin pour connaître l
 
 ### Paquets personnalisés
 
-La librairie autotrack est construite de façon modulaire et chaque plugin inclus ses propres dépendances, donc vous pouvez créer un paquet personnalisé en utilisant un empaqueteur de scrrit comme [Browserify](http://browserify.org/).
+La librairie autotrack est construite de façon modulaire et chaque plugin inclus ses propres dépendances, donc vous pouvez créer un paquet personnalisé en utilisant un empaqueteur de script comme [Browserify](http://browserify.org/).
 
 L'exemple suivant montre comment créer un paquet qui inclus seulement les plugins `eventTracker` et `outboundLinkTracker` :
 
@@ -232,4 +232,6 @@ Tous les plugins autotrack sont [testés via Sauce Labs](https://saucelabs.com/u
 
 Cette traduction française de la documentation d'[autotrack de Google Analytics](https://github.com/googleanalytics/autotrack) n'est pas officielle et peut être inexacte ou plus à jour.
 
-Si vous avez une correction à soumettre pour améliorer cette traduction, merci d'[ouvrir une issue](/issues) dans ce dépot.
+_Dernière mise à jour : 14 Août 2016_
+
+Si vous avez une correction à soumettre pour améliorer cette traduction, merci d'[ouvrir une issue](/issues) dans ce dépôt.

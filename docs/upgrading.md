@@ -1,4 +1,4 @@
-# Manuel de mise à jour
+# Guide de mise à jour
 
 Ce guide précise comment mettre à jour depuis toute version antérieure à la version 1.0.
 
@@ -6,9 +6,9 @@ Ce guide précise comment mettre à jour depuis toute version antérieure à la 
 
 ### Changements globaux
 
-Dans la version 1.0, vous ne pouvez plus inclure tous les plusgins avec l'instruction `ga('require', 'autotrack')`. Ce changement a été fait pour éviter que des utilisateurs n'activent accidentellement des comportements de plugins qu'il ne souhaitent pas.
+Dans la version 1.0, vous ne pouvez plus inclure tous les plugins avec l'instruction `ga('require', 'autotrack')`. Ce changement a été fait pour éviter que des utilisateurs n'activent accidentellement des comportements de plugins qu'il ne souhaitent pas.
 
-Maintenant, tous les plugins autotrack doivent être requis indivicuellement ainsi que leurs options.
+Maintenant, tous les plugins autotrack doivent être requis individuellement ainsi que leurs options.
 
 ```html
 <script>
@@ -58,14 +58,14 @@ Dans toutes les versions 1.x, un avertissement sera affiché dans la console si 
 
 - Ajout du support pour le suivi des formulaires sans sous-arborescence shadow DOM.
 - Ajout de la possibilité de personnaliser le sélecteur utilisé pour identifier les formulaires.
-- Ajout de la fonction utilitaire `parseUrl` à la méthode `shouldTrackOutboundForm` pour  identifer ou exclure plus facilement les formulaires sortants.
+- Ajout de la fonction utilitaire `parseUrl` à la méthode `shouldTrackOutboundForm` pour  identifier ou exclure plus facilement les formulaires sortants.
 
 #### [`outboundLinkTracker`](/docs/plugins/outbound-link-tracker.md)
 
 - Ajout du support for DOM events other than `click` (e.g. `contextmenu`, `touchend`, etc.)
 - Ajout du support for tracking links within shadow DOM subtrees.
 - Ajout de la ability to customize the selector used to identify links.
-- Ajout de la fonction utilitaire `parseUrl` à la méthode `shouldTrackOutboundLink` pour  identifer ou exclure plus facilement les liens sortants.
+- Ajout de la fonction utilitaire `parseUrl` à la méthode `shouldTrackOutboundLink` pour  identifier ou exclure plus facilement les liens sortants.
 
 ## Nouveaux plugins
 
