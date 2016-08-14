@@ -1,15 +1,15 @@
 # `cleanUrlTracker`
 
-This guide explains what the `cleanUrlTracker` plugin is and how to integrate it into your `analytics.js` tracking implementation.
+Ce guide explique ce qu'est le plugin `cleanUrlTracker` et comment il interagit avec votre implémentation du suivi `analytics.js`.
 
 ## Aperçu
 
-When viewing your most visited pages in Google Analytics, it's not uncommon to see multiple different URL paths that reference the same page on your site. The following report table is a good example of this and the frustrating situation many users find themselves in today:
+Lorsque vous regardez la plupart des pages visitées dans Google Analytics, il n'est pas rare de voir différents chemins d'URL qui référencent la même page sur votre site. Le tableau ci-dessous est un exemple de cela et de l'état de frustration dans lequel se trouvent actuellement beaucoup d'utilisateurs :
 
 <table>
   <tr valign="top">
     <th align="left">Page</th>
-    <th align="left">Pageviews</th>
+    <th align="left">Pages vues</th>
   </tr>
   <tr valign="top">
     <td>/contact</td>
@@ -20,7 +20,7 @@ When viewing your most visited pages in Google Analytics, it's not uncommon to s
     <td>431</td>
   </tr>
   <tr valign="top">
-    <td>/contact?hl=en</td>
+    <td>/contact?hl=fr</td>
     <td>67</td>
   </tr>
   <tr valign="top">
@@ -29,21 +29,21 @@ When viewing your most visited pages in Google Analytics, it's not uncommon to s
   </tr>
 </table>
 
-To prevent this problem, it's best to settle on a single, canonical URL path for each page you want to track, and only ever send the canonical version to Google Analytics.
+Pour éviter ce problème, il est mieux de se décider pour un chemin d'URL canonique unique pour chaque page que vous souhaitez suivre et de n'envoyer toujours que la version canonique à Google Analytics.
 
-The `cleanUrlTracker` plugin helps you do this. It lets you specify a preference for whether or not to include extraneous parts of the URL path, and updates all URLs accordingly.
+Le plugin `cleanUrlTracker` vous aide à faire ça. Il vous laisse définir votre préférence, si oui ou non il faut inclure les parties superflues du chemin d'URL et met à jour toutes les URLs en conséquence.
 
 ### Comment ça marche
 
-The `cleanUrlPlugin` works by intercepting each hit as it's being sent and modifying the [`page`](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#page) field based on the rules specified by the configuration [options](#options).
+Le plugin `cleanUrlTracker` fonctionne en interceptant chaque hit lorsqu'il est envoyé et modifie le champ [`page`](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#page) en fonction des règles spécifiées dans les [options](#options) de configuration.
 
-If no `page` field exists, one is created based on the URL path from the [`location`](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#location) field.
+S'il le champ `page` n'existe pas, il est crée en se basant sur le chemin d'URL du champ [`location`](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#location)
 
-**Note:** while the `cleanUrlTracker` plugin does modify the `page` field value for each hit, it never modifies the `location` field. This allows campaign and site search data encoded in the full URL to be preserved.
+**Note :** Bien que le plugin `cleanUrlTracker` modifie la valeur du champ `page` pour chaque hit, il ne modifie jamais le champ `location`. Cela permet de préserver les données encodées dans l'URL entière pour les campagnes et la recherche sur le site.
 
 ## Utilisation
 
-To enable the `cleanUrlTracker` plugin, run the [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins) command, specify the plugin name `'cleanUrlTracker'`, and pass in the configuration options you want to set:
+Pour activer le plugin `cleanUrlTracker` lancez la commande [`require`](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins), précisez le nom du plugin `'cleanUrlTracker'` et passez les options de configuration que vous souhaitez définir :
 
 ```js
 ga('require', 'cleanUrlTracker', options);
@@ -51,65 +51,65 @@ ga('require', 'cleanUrlTracker', options);
 
 ## Options
 
-The following table outlines all possible configuration options for the `cleanUrlTracker` plugin. If any of the options has a default value, the default is explicitly stated:
+Le tableau ci-dessous résume toutes les options de configuration possibles pour le plugin `cleanUrlTracker`. Si une de ces options a une valeur par défaut, elle est mentionné explicitement :
 
 <table>
   <tr valign="top">
-    <th align="left">Name</th>
+    <th align="left">Nom</th>
     <th align="left">Type</th>
-    <th align="left">Default</th>
+    <th align="left">Valeur par défaut</th>
   </tr>
   <tr valign="top">
     <td><code>stripQuery</code></a></td>
-    <td><code>boolean</code></a></td>
+    <td><code>booléen</code></a></td>
     <td>
-      When <code>true</code>, the query string portion of the URL will be removed.<br>
-      <strong>Default:</strong> <code>false</code>
+      À <code>true</code>, la chaine de caractère de la requête de l'URL sera supprimée.<br>
+      <strong>Par défaut :</strong> <code>false</code>
     </td>
   </tr>
   <tr valign="top">
     <td><code>queryDimensionIndex</code></a></td>
-    <td><code>number</code></a></td>
+    <td><code>chiffre</code></a></td>
     <td>
-      There are cases where you want to strip the query string from the URL, but you still want to record what query string was originally there, so you can report on those values separately. You can do this by creating a new <a href="https://support.google.com/analytics/answer/2709829">custom dimension</a> in Google Analytics. Set the dimension's <a href="https://support.google.com/analytics/answer/2709828#example-hit">scope</a> to "hit", and then set the index of the newly created dimension as the <code>queryDimensionIndex</code> option. Once set, the stripped query string will be set on the custom dimension at the specified index.
+    Il y a des cas où vous souhaitez enlever la chaîne de la requête de l'URL, mais vous voulez toujours enregistrer la chaine présente à l'origine. Vous pouvez faire ça en créant une <a href="https://support.google.com/analytics/answer/2709829">dimension personnalisée</a> dans Google Analytics. Mettez le scope de la dimension à "hit" et ensuite définissez l'index de la dimension nouvellement créée en tant qu’option <code>queryDimensionIndex</code>. Une fois définie, la chaîne supprimée de la requête sera définie pour la dimension personnalisée à l’index spécifié.
     </td>
   </tr>
   <tr valign="top">
     <td><code>indexFilename</code></a></td>
-    <td><code>string</code></a></td>
+    <td><code>chaîne</code></a></td>
     <td>
-      When set, the <code>indexFilename</code> value will be stripped from the end of a URL. If your server supports automatically serving index files, you should set this to whatever value your server uses (usually <code>'index.html'</code>).
+      Lorsqu'elle est définie, la valeur <code>indexFilename</code> sera supprimée de la fin d'une URL. Si votre serveur permet de servir automatiquement les fichiers d'index, vous devriez définir cette valeur à celle utilisée par votre serveur (habituellement <code>'index.html'</code>).
     </td>
   </tr>
   <tr valign="top">
     <td><code>trailingSlash</code></a></td>
-    <td><code>string</code></a></td>
+    <td><code>chaîne</code></a></td>
     <td>
-      When set to <code>'add'</code>, a trailing slash is appended to the end of all URLs (if not already present). When set to <code>'remove'</code>, a trailing slash is removed from the end of all URLs. No action is taken if any other value is used. Note: when using the <code>indexFilename</code> option, index filenames are stripped prior to the trailing slash being added or removed.
+      Définie à <code>'add'</code>, un slash final est ajouté à la fin de toutes les URLs (s'il n'est pas déjà présent). Définie à <code>'remove'</code>, un slash final est supprimé de la fin de toutes les URLs. Aucun action n'est prise si une autre valeur est utilisée. Note : Lors du recours à l'option <code>indexFilename</code>, les noms de fichier d'index sont nettoyés avant que le slash final ne soit ajouté ou supprimé.
     </td>
   </tr>
 </table>
 
 ## Méthodes
 
-The following table lists all methods for the `cleanUrlTracker` plugin:
+Le tableau ci-dessous liste toutes les méthodes pour le plugin `cleanUrlTracker`:
 
 <table>
   <tr valign="top">
-    <th align="left">Name</th>
+    <th align="left">Nom</th>
     <th align="left">Description</th>
   </tr>
   <tr valign="top">
     <td><code>remove</code></a></td>
-    <td>Removes the <code>cleanUrlTracker</code> plugin from the specified tracker and restores all modified tasks to their original state prior to the plugin being required.</td>
+    <td>Supprime le plugin <code>cleanUrlTracker</code> du tracker spécifié et restaure toutes les tâches modifiées à leur état d'origine avant que le plugin ne soit requis.</td>
   </tr>
 </table>
 
-For details on how `analytics.js` plugin methods work and how to invoke them, see [calling plugin methods](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins#calling_plugin_methods) in the `analytics.js` documentation.
+Pour savoir comment fonctionnent les méthodes des plugins `analytics.js` et comment les appeler, regardez comment [appeler des méthodes de plugin](https://developers.google.com/analytics/devguides/collection/analyticsjs/using-plugins#calling_plugin_methods) dans la documentation d'`analytics.js`.
 
 ## Exemple
 
-Given the four URL paths shown in the table at the beginning of this guide, the following `cleanUrlTracker` configuration would ensure that only the URL path `/contact` ever appears in your reports (assumes you've created a custom dimension for the query at index 1):
+Pour les quatre chemins d'URL montrés dans le tableau au début de ce guide, la configuration `cleanUrlTracker` suivante assurera que seul le chemin d'URL `/contact` apparaisse dans vos rapports (en supposant que vous avez créé une dimension personnalisée pour la requête à l'index 1):
 
 ```js
 ga('require', 'cleanUrlTracker', {
@@ -120,7 +120,7 @@ ga('require', 'cleanUrlTracker', {
 });
 ```
 
-And given those four URLs, the following fields would be sent to Google Analytics for each respective hit:
+Et pour ces quatre URLs, les champs suivants seront envoyés pour chaque hit respectif :
 
 ```
 [1] {

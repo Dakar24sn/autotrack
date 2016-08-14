@@ -8,15 +8,15 @@ Beaucoup des plugins d'autotrack acceptent des options communes à plusieurs plu
 
 ## `fieldsObj`
 
-Some of the autotrack plugins send hits with default [analytics.js field values](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference) set. These plugins accept a `fieldsObj` option, which allows you to customize those values for each plugin. It also allows you to set any fields that aren't set by default.
+Certains des plugins autotrack envoient des hits avec les [valeurs du champ analytics.js](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference) définies par défaut. Ces plugins acception une option `fieldsObj`, qui vous permet de personnaliser ces valeurs pour chaque plugin. Cela vous permet également de définir les champs qui ne sont pas définis par défaut.
 
-The `fieldsObj` option is an `Object` whose properties can be any [analytics.js field name](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference), and whose values will be used as the corresponding field value for all hits sent by the plugin.
+L’option `fieldsObj` est un `Object` dont les propriétés peuvent être un [nom de champ analytics.js](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference) et dont les valeurs seront utilisées comme la valeur correspondante par défaut pour tous les hits envoyés par le plugin.
 
 ### Exemples
 
 #### `mediaQueryTracker`
 
-This configuration ensures all events sent by the `mediaQueryTracker` plugin are non-interaction events:
+Cette configuration garantie que tous les évènements envoyés par le plugin `mediaQueryTracker` plugin sont des évènements non-interactifs :
 
 ```js
 ga('require', 'mediaQueryTracker', {
@@ -29,7 +29,7 @@ ga('require', 'mediaQueryTracker', {
 
 #### `urlChangeTracker`
 
-This configuration sets a [custom dimension](https://support.google.com/analytics/answer/2709828) at index 1 for all pageview hits sent by the `urlChangeTracker`. This would allow you to differentiate between the initial pageview and "virtual" pageviews sent after loading new pages via AJAX:
+Cette configuration définit une [dimension personnalisée](https://support.google.com/analytics/answer/2709828) à l’index 1 pour tous les hits de pageview envoyé par l’`urlChangeTracker`. Cela peut vous permettre de différencier des pageview d’origine de pageview « virtuels » envoyés après le chargement de nouvelles pages en AJAX:
 
 ```js
 ga('require', 'urlChangeTracker', {
@@ -44,11 +44,11 @@ ga('send', 'pageview', {
 
 ## `attributePrefix`
 
-All plugins that send hits to Google Analytics as a result of user interactions with DOM elements support declarative attribute binding (see the [`eventTracker`](/docs/plugins/event-tracker.md) plugin to see how this works). As such, each of these plugins accept an `attributePrefix` option to customize what attribute prefix to use.
+Tous les plugins qui envoient des hits à Google Analytics à la suite d’interactions utilisateurs avec des éléments du DOM supportent l’ajout d’attribut déclaratif (Voir le plugin [`eventTracker`](/docs/plugins/event-tracker.md)  pour voir comment il fonctionne). À ce titre, chacun de ces plugins acceptent une option `attributePrefix` option pour personnaliser le préfixe d’attribut à utiliser.
 
-By default, the `attributePrefix` value used by each plugin is the string `'ga-'`, though that value can be customized on a per-plugin basis.
+Par défaut, la valeur `attributePrefix` utilisée par chaque plugin est la chaîne `'ga-'`, bien que cette valeur puisse être personnalisée au niveau de chaque plugin.
 
-**Note:** when setting the same field in both the `fieldsObj` option as well as via a DOM element attribute, the attribute's value will override the `fieldsObj` value.
+**Remarque :** Quand le même champ est défini et dans l’option `fieldsObj` et en tant qu’attribut d’élément du DOM, la valeur de l’attribut écrasera la valeur de `fieldsObj`.
 
 ### Exemples
 
@@ -101,21 +101,23 @@ ga('require', 'outboundLinkTracker', {
 
 ## `hitFilter`
 
-The `hitFilter` option is useful when you need to make more advanced modifications to a hit, or when you need to abort the hit altogether. `hitFilter` is a function that gets invoked with the tracker's [model object](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference) as its first argument, and (if the hit was initiated by a user interaction with a DOM element) the DOM element as the second argument.
+L’option `hitFilter` est utile quand vous avez besoin de faire des modifications plus avancées à un hit ou que vous avez besoin de faire complètement échouer un hit.
 
-Within the `hitFilter` function you can get the value of any of the model object's fields using the [`get`](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference#get) method on the `model` argument. And you can set a new value using the [`set`](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference#set) method on the `model` argument. To abort the hit, throw an error.
+`hitFilter` est une fonction qui est appelée avec l’[objet modèle](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference)  du tracker en tant que premier argument et (si le hit été initié par un interaction utilisateur avec un élément du DOM) l’élément du DOM comme second argument.
 
-To modify the model for the current hit only (and not all subsequent hits), make sure to set the third argument ([`temporary`](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference#set)) to `true`.
+À l’intérieur de la fonction `hitFilter` vous pouvez récupérer la valeur de n’importe quel champ du modèle d’objet en utilisant la méthode [`get`](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference#get) sur l’argument `model`. Et vous pouvez définir une nouvelle valeur en utilisant la méthode [`set`](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference#set) sur l’argument `model`. Pour abandonner le hit, levez une erreur.
+
+Pour modifier le modèle pour le hit courant seulement (et pas pour les hits suivants) assurez vous de définir le troisième argument ([`temporary`](https://developers.google.com/analytics/devguides/collection/analyticsjs/model-object-reference#set)) à `true`.
 
 ### Comment ça marche
 
-The `hitFilter` option works by overriding the tracker's [`buildHitTask`](https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks). The passed `hitFilter` function runs after the `fieldsObj` values and attribute fields have been set on the tracker but before running the original `buildHitTask`. Refer to the guide on [analytics.js tasks](https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks) to learn more.
+L’option `hitFilter` fonctionne en annulant le  [`buildHitTask`](https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks) du tracker. La fonction passée `hitFilter` se lance après que les valeurs et les attributes `fieldsObj` aient été définies sur le tracker mais avant de lancer le `buildHitTask` initial. Référez vous au guide sur les [tâches analytics.js](https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks) pour en apprendre davantage.
 
 ### Exemples
 
 #### `pageVisibilityTracker`
 
-This configuration sets custom dimension 1 to whatever the `eventValue` field is set to for all `visibilitychange` event hits. It specifies `true` as the third argument to the `set` method, so this change affects the current hit only:
+Cette configuration définie une dimension personnalisée 1 en fonction de la valeur définie pour le champ `eventValue` pour tous les hits d’évènements `visibilitychange`. Cela définit à `true` an tant que troisième argument à la méthode `set`, de façon à ce que ce changement n’affecte que le hit en cours:
 
 ```js
 ga('require', 'pageVisibilityTracker', {
@@ -127,7 +129,7 @@ ga('require', 'pageVisibilityTracker', {
 
 #### `impressionTracker`
 
-This configuration prevents hits from being sent for impressions on elements with the `is-invisible` class.
+Cette configuration empêche les hits d’être envoyés pour les impressions sur des éléments avec la classe `is-invisible`.
 
 ```js
 ga('require', 'impressionTracker', {
